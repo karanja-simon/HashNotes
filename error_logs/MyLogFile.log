@@ -1,0 +1,14 @@
+Sep 19, 2014 9:00:39 AM class hashnotes.utils.DatabaseConnection
+WARNING: The url cannot be null
+Sep 19, 2014 9:00:41 AM class hashnotes.utils.DatabaseConnection
+WARNING: The url cannot be null
+Sep 19, 2014 11:28:50 AM class hashnotes.dao.DatabaseHandle
+WARNING: No authorized routine named 'LIKE' of type 'FUNCTION' having compatible arguments was found.
+Sep 19, 2014 11:32:52 AM class hashnotes.dao.DatabaseHandle
+WARNING: Syntax error: Encountered "16" at line 1, column 62.
+Sep 19, 2014 11:41:03 AM class hashnotes.dao.DatabaseHandle
+WARNING: The column position '1' is out of range.  The number of columns for this ResultSet is '0'.
+Sep 19, 2014 11:41:10 AM class hashnotes.dao.DatabaseHandle
+WARNING: The column position '1' is out of range.  The number of columns for this ResultSet is '0'.
+Sep 19, 2014 11:41:40 AM class hashnotes.dao.DatabaseHandle
+WARNING: The column position '0' is out of range.  The number of columns for this ResultSet is '0'.

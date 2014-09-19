@@ -1,0 +1,14 @@
+Sep 16, 2014 2:08:35 PM class hashnotes.utils.MyLogger
+WARNING: my frst error
+Sep 16, 2014 2:09:57 PM class hashnotes.utils.MyLogger
+WARNING: my frst error ty
+Sep 16, 2014 2:10:29 PM class hashnotes.utils.MyLogger
+OFF: my frst error ty
+Sep 16, 2014 2:10:48 PM class hashnotes.utils.MyLogger
+ALL: my frst error ty
+Sep 16, 2014 2:15:35 PM class hashnotes.utils.DatabaseConnection
+WARNING: java.net.ConnectException : Error connecting to server localhost on port 1527 with message Connection refused: connect.
+Sep 16, 2014 2:16:42 PM class hashnotes.utils.DatabaseConnection
+WARNING: The connection was refused because the database hashnotes was not found.
+Sep 16, 2014 2:18:51 PM class hashnotes.utils.DatabaseConnection
+WARNING: The connection was refused because the database hashnotes was not found.
