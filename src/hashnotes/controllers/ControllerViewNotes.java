@@ -8,9 +8,12 @@ package hashnotes.controllers;
 import hashnotes.dao.DatabaseHandle;
 import hashnotes.models.ModelEntries;
 import hashnotes.ui.JDialogPrompt;
+import hashnotes.ui.JFrameMainUI;
+import hashnotes.ui.JPanelLearn;
 import hashnotes.ui.JPanelViewNotes;
 import hashnotes.utils.MyLogger;
 import java.awt.AlphaComposite;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -43,16 +46,18 @@ import javax.swing.JTextPane;
 public class ControllerViewNotes {
 
     private final JPanelViewNotes view;
+    private final JFrameMainUI mainUi;
     private final GridBagConstraints gbc = new GridBagConstraints();
     private JTextPane[] jTextPaneNote;
     private String[] jTextPaneNames;
     private JPanel[] jPanelNoteWrapper;
     private JSeparator[] jSeparators;
-    private String timestamp;
+    private ModelEntries[] entry;
     JDialogPrompt jdp = new JDialogPrompt(null, true);
 
-    public ControllerViewNotes(JPanelViewNotes view) {
+    public ControllerViewNotes(JPanelViewNotes view, JFrameMainUI mainUi) {
         this.view = view;
+        this.mainUi = mainUi;
         gbc.weightx = 1.0;
         gbc.weighty = 0;
         gbc.fill = GridBagConstraints.BOTH;
@@ -72,27 +77,30 @@ public class ControllerViewNotes {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                System.out.println(option.getInvoker().getName());
+                //System.out.println(option.getInvoker().getName());
                 JTextPane notes = (JTextPane) (option.getInvoker());
                 notes.setEditable(true);
                 String entryDate = notes.getText();
-                System.out.println(entryDate.substring(0, 20));
-                Pattern p = Pattern.compile("\\d{4}-\\d{2}-\\d{2}\\s\\d{2}:\\d{2}:\\d{2}.\\d{3}");
+                //System.out.println(entryDate.substring(0, 20));
+                Pattern p = Pattern.compile("\\d{4}-\\d{2}-\\d{2}\\s\\d{2}:\\d{2}:\\d{2}.\\d+");
                 Matcher m = p.matcher(entryDate);
                 if (m.find()) {
                     System.out.println("found: " + m.group());
                     DatabaseHandle dh = new DatabaseHandle();
-                    if (dh.deleteNote(m.group())) {
-                        for (Component c : view.getjPanelWrapper().getComponents()) {
-                            System.out.println(c);
-                        }
-                        view.getjPanelWrapper().removeAll();
-                        view.getjPanelWrapper().revalidate();
-                        loadNotes();
+                    dh.deleteNote(m.group());
+                    clearComponents();
+                    loadNotes();
 
-                    }
                 }
 
+            }
+        });
+        save.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                //view.getjPanelWrapper().revalidate();
             }
         });
         option.add(delete);
@@ -103,6 +111,28 @@ public class ControllerViewNotes {
         option.setBackground(Color.WHITE);
         edit.setBackground(Color.red);
         return option;
+    }
+
+    private void clearComponents() {
+        GridBagLayout gbl = (GridBagLayout) view.getjPanelWrapper().getLayout();
+        for (int i = 0; i < jPanelNoteWrapper.length; i++) {
+            GridBagConstraints gc = gbl.getConstraints(jPanelNoteWrapper[i]);
+            view.getjPanelWrapper().remove(jTextPaneNote[i]);
+            view.getjPanelWrapper().remove(jPanelNoteWrapper[i]);
+            view.getjPanelWrapper().remove(jSeparators[i]);
+            view.getjPanelWrapper().revalidate();
+            view.getjPanelWrapper().repaint();
+        }
+        if (jPanelNoteWrapper.length == 1) {
+            showTutorial();
+        }
+        System.out.println("components remaining: " + jPanelNoteWrapper.length);
+    }
+
+    public void showTutorial() {
+        CardLayout cl = (CardLayout) (mainUi.getjPanelWrapper().getLayout());
+        mainUi.getjPanelWrapper().add("learn", new JPanelLearn());
+        cl.show(mainUi.getjPanelWrapper(), "learn");
     }
 
     public class CustomMenuItem extends JMenuItem {
@@ -116,8 +146,12 @@ public class ControllerViewNotes {
         }
     }
 
+    public ModelEntries[] getEntry() {
+        return entry;
+    }
+
     public final void loadNotes() {
-        ModelEntries[] entry = new DatabaseHandle().getNotes();
+        entry = new DatabaseHandle().getNotes();
         System.out.println("no of records: " + entry.length);
         String[] notes = new String[entry.length];
         for (int i = 0; i < entry.length; i++) {
@@ -125,6 +159,13 @@ public class ControllerViewNotes {
         }
         initCategoryPanels(entry, notes);
         tags();
+
+//        if (entry.length < 1) {
+//            showTutorial();
+//        } else {
+//            initCategoryPanels(entry, notes);
+//            tags();
+//        }
     }
 
     private void initCategoryPanels(ModelEntries[] entries, String[] note) {
@@ -136,9 +177,10 @@ public class ControllerViewNotes {
         for (int i = 0; i < entries.length; i++) {
             jTextPaneNote[i] = new JTextPane();
             jPanelNoteWrapper[i] = new JPanel();
-            jPanelNoteWrapper[i].setBackground(Color.WHITE);
+            jPanelNoteWrapper[i].setBackground(new Color(250, 250, 250));
             view.initBeautifulNotes(jTextPaneNote[i]);
             jTextPaneNote[i].setPreferredSize(new Dimension(699, 80));
+            jTextPaneNote[i].setBackground(new Color(250, 250, 250));
             jTextPaneNote[i].setText(note[i]);
             jPanelNoteWrapper[i].add(jTextPaneNote[i]);
             jTextPaneNote[i].setComponentPopupMenu(options());

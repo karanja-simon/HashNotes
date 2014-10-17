@@ -5,6 +5,8 @@
  */
 package hashnotes.controllers;
 
+import hashnotes.ui.JDialogPrompt;
+import hashnotes.ui.JFrameMainUI;
 import hashnotes.ui.JPanelBackup;
 import hashnotes.utils.FilesOps;
 import java.awt.event.ActionEvent;
@@ -20,9 +22,11 @@ public class ControllerBackup {
 
     private final JPanelBackup view;
     private final ControllerViewNotes cvn;
+    private final JFrameMainUI mainUi;
 
-    public ControllerBackup(JPanelBackup view, ControllerViewNotes viewNotes) {
+    public ControllerBackup(JPanelBackup view, ControllerViewNotes viewNotes, JFrameMainUI mainUi ) {
         this.view = view;
+        this.mainUi = mainUi;
         this.cvn = viewNotes;
         HandleEvents he = new HandleEvents();
         view.getjButtonBackup().addActionListener(he);
@@ -46,7 +50,12 @@ public class ControllerBackup {
                 for(int i=0; i<notes.length; i++){
                     notes[i] = cvn.getjTextPaneNote()[i].getText();
                 }
-                FilesOps.writeBackup(notes);
+                if(FilesOps.writeBackup(notes)){
+                    JDialogPrompt jdp = new JDialogPrompt(null, true);
+                    jdp.setPromptMessage("Backup created successfully", "DONE!");
+                    jdp.setVisible(true);
+                    mainUi.showBackup();
+                }
 
             }
         }

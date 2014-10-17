@@ -12,3 +12,17 @@ Sep 19, 2014 11:41:10 AM class hashnotes.dao.DatabaseHandle
 WARNING: The column position '1' is out of range.  The number of columns for this ResultSet is '0'.
 Sep 19, 2014 11:41:40 AM class hashnotes.dao.DatabaseHandle
 WARNING: The column position '0' is out of range.  The number of columns for this ResultSet is '0'.
+Sep 23, 2014 6:26:44 PM class hashnotes.utils.DatabaseConnection
+WARNING: DERBY SQL error: SQLCODE: -1, SQLSTATE: XJ040, SQLERRMC: Failed to start database 'D:/backup/NetBeansProjects/HashNotes Ver 1.1/db/hashnotes' with class loader sun.misc.Launcher$AppClassLoader@5c9aa764, see the next exception for details.::SQLSTATE: XSDB6Another instance of Derby may have already booted the database D:\backup\NetBeansProjects\HashNotes Ver 1.1\db\hashnotes.
+Sep 23, 2014 6:26:46 PM class hashnotes.utils.DatabaseConnection
+WARNING: DERBY SQL error: SQLCODE: -1, SQLSTATE: XJ040, SQLERRMC: Failed to start database 'D:/backup/NetBeansProjects/HashNotes Ver 1.1/db/hashnotes' with class loader sun.misc.Launcher$AppClassLoader@5c9aa764, see the next exception for details.::SQLSTATE: XSDB6Another instance of Derby may have already booted the database D:\backup\NetBeansProjects\HashNotes Ver 1.1\db\hashnotes.
+Sep 23, 2014 6:26:48 PM class hashnotes.utils.DatabaseConnection
+WARNING: DERBY SQL error: SQLCODE: -1, SQLSTATE: XJ040, SQLERRMC: Failed to start database 'D:/backup/NetBeansProjects/HashNotes Ver 1.1/db/hashnotes' with class loader sun.misc.Launcher$AppClassLoader@5c9aa764, see the next exception for details.::SQLSTATE: XSDB6Another instance of Derby may have already booted the database D:\backup\NetBeansProjects\HashNotes Ver 1.1\db\hashnotes.
+Sep 23, 2014 6:26:50 PM class hashnotes.utils.DatabaseConnection
+WARNING: DERBY SQL error: SQLCODE: -1, SQLSTATE: XJ040, SQLERRMC: Failed to start database 'D:/backup/NetBeansProjects/HashNotes Ver 1.1/db/hashnotes' with class loader sun.misc.Launcher$AppClassLoader@5c9aa764, see the next exception for details.::SQLSTATE: XSDB6Another instance of Derby may have already booted the database D:\backup\NetBeansProjects\HashNotes Ver 1.1\db\hashnotes.
+Sep 23, 2014 6:27:14 PM class hashnotes.utils.DatabaseConnection
+WARNING: DERBY SQL error: SQLCODE: -1, SQLSTATE: XJ040, SQLERRMC: Failed to start database 'D:/backup/NetBeansProjects/HashNotes Ver 1.1/db/hashnotes' with class loader sun.misc.Launcher$AppClassLoader@5c9aa764, see the next exception for details.::SQLSTATE: XSDB6Another instance of Derby may have already booted the database D:\backup\NetBeansProjects\HashNotes Ver 1.1\db\hashnotes.
+Sep 23, 2014 6:27:16 PM class hashnotes.utils.DatabaseConnection
+WARNING: DERBY SQL error: SQLCODE: -1, SQLSTATE: XJ040, SQLERRMC: Failed to start database 'D:/backup/NetBeansProjects/HashNotes Ver 1.1/db/hashnotes' with class loader sun.misc.Launcher$AppClassLoader@5c9aa764, see the next exception for details.::SQLSTATE: XSDB6Another instance of Derby may have already booted the database D:\backup\NetBeansProjects\HashNotes Ver 1.1\db\hashnotes.
+Sep 23, 2014 6:27:18 PM class hashnotes.utils.DatabaseConnection
+WARNING: DERBY SQL error: SQLCODE: -1, SQLSTATE: XJ040, SQLERRMC: Failed to start database 'D:/backup/NetBeansProjects/HashNotes Ver 1.1/db/hashnotes' with class loader sun.misc.Launcher$AppClassLoader@5c9aa764, see the next exception for details.::SQLSTATE: XSDB6Another instance of Derby may have already booted the database D:\backup\NetBeansProjects\HashNotes Ver 1.1\db\hashnotes.

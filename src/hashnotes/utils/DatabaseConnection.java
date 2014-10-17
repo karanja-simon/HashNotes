@@ -28,37 +28,34 @@ public class DatabaseConnection {
 
     public static void initDatabaseConnection() {
         File file = new File("db");
-        System.out.println(file.getAbsolutePath());
+        //System.out.println(file.getAbsolutePath());
         DatabaseConnection.dbHost = "jdbc:derby://localhost:1527/" + file.getAbsolutePath().replace("\\", "/") + "/hashnotes";
         DatabaseConnection.dbUsername = "hashnotes";
         DatabaseConnection.dbPassword = "hashnotes";
-        startDerbyServer();
-        setConnection();
     }
 
-    private static void startDerbyServer() {
+    public static boolean startDerbyServer() {
         try {
             server = new NetworkServerControl(InetAddress.getByName("localhost"), 1527);
             server.start(null);
         } catch (UnknownHostException e) {
             MyLogger.log(DatabaseConnection.class, e.getMessage());
+            return false;
         } catch (Exception e) {
             MyLogger.log(DatabaseConnection.class, e.getMessage());
+            return false;
         }
+        return true;
     }
 
     public static final boolean setConnection() {
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
             con = DriverManager.getConnection(dbHost, dbUsername, dbPassword);
-            System.out.println("connection ok");
-        } catch (SQLException SQL_Err) {
+            //System.out.println("connection ok");
+        } catch (SQLException | ClassNotFoundException SQL_Err) {
             MyLogger.log(DatabaseConnection.class, SQL_Err.getMessage());
-            System.out.println(SQL_Err);
-            return false;
-        } catch (ClassNotFoundException cnfe) {
-            System.out.println(cnfe);
-            MyLogger.log(DatabaseConnection.class, cnfe.getMessage());
+           // System.out.println(SQL_Err);
             return false;
         }
 
@@ -67,9 +64,12 @@ public class DatabaseConnection {
 
     public static Connection getConnection() {
         initDatabaseConnection();
+        startDerbyServer();
+        setConnection();
         return con;
     }
-    public static NetworkServerControl getServer(){
+
+    public static NetworkServerControl getServer() {
         return server;
     }
 

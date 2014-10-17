@@ -44,10 +44,15 @@ public class ControllerNotesLoader {
 
         @Override
         protected void done() {
-            
-            CardLayout cl = (CardLayout) (mainUi.getjPanelWrapper().getLayout());
-            mainUi.getjPanelWrapper().add("view note", notes);
-            cl.show(mainUi.getjPanelWrapper(), "view note");
+            System.out.println(viewNotes.getEntry().length);
+            if (viewNotes.getEntry().length == 0 ) {
+                viewNotes.showTutorial();
+            } else {
+                CardLayout cl = (CardLayout) (mainUi.getjPanelWrapper().getLayout());
+                mainUi.getjPanelWrapper().add("view note", notes);
+                cl.show(mainUi.getjPanelWrapper(), "view note");
+            }
+
         }
 
         @Override
@@ -61,7 +66,8 @@ public class ControllerNotesLoader {
             try {
                 Thread.sleep(2000);
                 notes = new JPanelViewNotes();
-                viewNotes = new ControllerViewNotes(notes);
+                viewNotes = new ControllerViewNotes(notes, mainUi);
+                System.out.println(viewNotes.getEntry().length);
             } catch (InterruptedException ex) {
                 Logger.getLogger(ControllerNotesLoader.class.getName()).log(Level.SEVERE, null, ex);
             }

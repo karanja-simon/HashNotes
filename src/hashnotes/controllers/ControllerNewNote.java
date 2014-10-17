@@ -8,6 +8,7 @@ package hashnotes.controllers;
 import hashnotes.dao.DatabaseHandle;
 import hashnotes.ui.JDialogNewNote;
 import hashnotes.ui.JDialogPrompt;
+import hashnotes.ui.JFrameMainUI;
 import hashnotes.ui.JPanelViewNotes;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -28,10 +29,12 @@ public class ControllerNewNote {
     private AttributeSet attrBlack = null;
     private final ControllerViewNotes viewNotes;
     private final JPanelViewNotes notes;
-    public ControllerNewNote(JDialogNewNote view, JPanelViewNotes notes, ControllerViewNotes viewNotes ) {
+    private final JFrameMainUI mainUi;
+    public ControllerNewNote(JDialogNewNote view, JPanelViewNotes notes, ControllerViewNotes viewNotes, JFrameMainUI mainUi ) {
         this.view = view;
         this.notes = notes;
         this.viewNotes = viewNotes;
+        this.mainUi = mainUi;
         this.cont = StyleContext.getDefaultStyleContext();
         this.attr = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.RED);
         this.attrBlack = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLACK);
@@ -43,6 +46,8 @@ public class ControllerNewNote {
         view.getAddTag().addActionListener(he);
         view.getExcTag().addActionListener(he);
         view.getWebButtonAddNote().addActionListener(he);
+        view.getjButtonClose().addActionListener(he);
+        view.getWebButtonClose().addActionListener(he);
     }
 
     private void initBeautifulNotes() {
@@ -161,6 +166,9 @@ public class ControllerNewNote {
                    jdp.setPromptMessage("Cannot add empty note!", "TRY AGAIN!");  
                 }
                 jdp.setVisible(true);
+            }
+            if(e.getSource() == view.getWebButtonClose() || e.getSource() == view.getjButtonClose()){
+               mainUi.showNotes();
             }
         }
 

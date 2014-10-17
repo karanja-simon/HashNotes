@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import hashnotes.models.ModelEntries;
 import hashnotes.utils.DatabaseConnection;
 import hashnotes.utils.MyLogger;
-import java.sql.Statement;
 
 public class DatabaseHandle {
 
@@ -70,7 +69,7 @@ public class DatabaseHandle {
             String sql = "DELETE FROM HASHNOTES.TBL_NOTES WHERE entry_date ='"+match+"'";
             delete = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             //delete.setString(0, match);
-            System.out.println("entry timestamp: "+match);
+            //System.out.println("entry timestamp: "+match);
             //stmt.execute(sql)
             
             if(delete.executeUpdate() == 1){

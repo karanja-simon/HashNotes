@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class FilesOps {
 
-    public static void writeBackup(String[] notes) {
+    public static boolean writeBackup(String[] notes) {
         try {
 
             SystemTime st = new SystemTime();
@@ -40,7 +40,9 @@ public class FilesOps {
 
         } catch (IOException e) {
             MyLogger.log(FilesOps.class, e.getMessage());
+            return false;
         }
+        return true;
     }
 
     public static ArrayList<String> listFilesForFolder(final File folder) {

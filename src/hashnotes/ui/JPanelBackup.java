@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package hashnotes.ui;
 
+import hashnotes.utils.CustomScrollbarUI;
+import java.awt.Color;
+import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JList;
@@ -21,6 +23,8 @@ public class JPanelBackup extends javax.swing.JPanel {
      */
     public JPanelBackup() {
         initComponents();
+        jScrollPane1.getVerticalScrollBar().setPreferredSize(new Dimension(10, 0));
+        jScrollPane1.getVerticalScrollBar().setUI(new CustomScrollbarUI(Color.WHITE));
     }
 
     public JButton getjButtonBackup() {
@@ -76,10 +80,6 @@ public class JPanelBackup extends javax.swing.JPanel {
         jButtonRestore = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-
-        setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setText("BACKUP INTERVALS");
 

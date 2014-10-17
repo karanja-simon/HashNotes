@@ -15,6 +15,7 @@ import com.alee.laf.menu.WebPopupMenu;
 import com.alee.managers.hotkey.Hotkey;
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JTextPane;
 
 /**
@@ -56,6 +57,14 @@ public class JDialogNewNote extends javax.swing.JDialog {
 
     public void setjTextPaneNotes(JTextPane jTextPaneNotes) {
         this.jTextPaneNotes = jTextPaneNotes;
+    }
+
+    public JButton getjButtonClose() {
+        return jButtonClose;
+    }
+
+    public WebButton getWebButtonClose() {
+        return webButtonClose;
     }
 
     public WebSplitButton getWebSplitButtonTags() {
@@ -125,11 +134,11 @@ public class JDialogNewNote extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPaneNotes = new javax.swing.JTextPane();
-        jButton3 = new javax.swing.JButton();
+        jButtonClose = new javax.swing.JButton();
         webSplitButtonTags = new com.alee.extended.button.WebSplitButton();
         webSwitchMoreTags = new com.alee.extended.button.WebSwitch();
         webButtonAddNote = new com.alee.laf.button.WebButton();
-        webButton4 = new com.alee.laf.button.WebButton();
+        webButtonClose = new com.alee.laf.button.WebButton();
         webHotkeyLabelTags = new com.alee.extended.label.WebHotkeyLabel();
 
         webMenu1.setText("webMenu1");
@@ -144,14 +153,14 @@ public class JDialogNewNote extends javax.swing.JDialog {
         jTextPaneNotes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane2.setViewportView(jTextPaneNotes);
 
-        jButton3.setBackground(new java.awt.Color(51, 51, 51));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hashnotes/resources/close (2).png"))); // NOI18N
-        jButton3.setContentAreaFilled(false);
-        jButton3.setFocusPainted(false);
-        jButton3.setOpaque(true);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonClose.setBackground(new java.awt.Color(51, 51, 51));
+        jButtonClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hashnotes/resources/close (2).png"))); // NOI18N
+        jButtonClose.setContentAreaFilled(false);
+        jButtonClose.setFocusPainted(false);
+        jButtonClose.setOpaque(true);
+        jButtonClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonCloseActionPerformed(evt);
             }
         });
 
@@ -167,11 +176,11 @@ public class JDialogNewNote extends javax.swing.JDialog {
         webButtonAddNote.setText("Add");
         webButtonAddNote.setIconTextGap(0);
 
-        webButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hashnotes/resources/close (2).png"))); // NOI18N
-        webButton4.setText("Close");
-        webButton4.addActionListener(new java.awt.event.ActionListener() {
+        webButtonClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hashnotes/resources/close (2).png"))); // NOI18N
+        webButtonClose.setText("Close");
+        webButtonClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                webButton4ActionPerformed(evt);
+                webButtonCloseActionPerformed(evt);
             }
         });
 
@@ -191,17 +200,17 @@ public class JDialogNewNote extends javax.swing.JDialog {
                 .addGap(26, 26, 26)
                 .addComponent(webButtonAddNote, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(webButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(webButtonClose, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addComponent(jScrollPane2)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jButtonClose, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonClose, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
@@ -209,7 +218,7 @@ public class JDialogNewNote extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(webSplitButtonTags, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(webButtonAddNote, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(webButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(webButtonClose, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(webHotkeyLabelTags, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(webSwitchMoreTags, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -240,14 +249,14 @@ public class JDialogNewNote extends javax.swing.JDialog {
         webSplitButtonTags.setPopupMenu(popupMenu);
     }//GEN-LAST:event_webSplitButtonTagsActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonCloseActionPerformed
 
-    private void webButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_webButton4ActionPerformed
+    private void webButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_webButtonCloseActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_webButton4ActionPerformed
+    }//GEN-LAST:event_webButtonCloseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -292,12 +301,12 @@ public class JDialogNewNote extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonClose;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextPane jTextPaneNotes;
-    private com.alee.laf.button.WebButton webButton4;
     private com.alee.laf.button.WebButton webButtonAddNote;
+    private com.alee.laf.button.WebButton webButtonClose;
     private com.alee.extended.label.WebHotkeyLabel webHotkeyLabelTags;
     private com.alee.laf.menu.WebMenu webMenu1;
     private com.alee.extended.button.WebSplitButton webSplitButtonTags;

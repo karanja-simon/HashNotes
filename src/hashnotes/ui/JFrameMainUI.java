@@ -18,7 +18,6 @@ import java.awt.CardLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -60,7 +59,7 @@ public class JFrameMainUI extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         homePanel();
         notes = new JPanelViewNotes();
-        viewNotes = new ControllerViewNotes(notes);
+        viewNotes = new ControllerViewNotes(notes, this);
         this.wmiTags = new WebMenuItem("Tags", Hotkey.T);
         this.wmiNewNote = new WebMenuItem("Add New Note", Hotkey.V);
         this.wmiBackup = new WebMenuItem("Backup the Notes", Hotkey.ALT_B);
@@ -89,11 +88,7 @@ public class JFrameMainUI extends javax.swing.JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-//                JPanelViewNotes notes = new JPanelViewNotes();
-//                viewNotes = new ControllerViewNotes(notes);
-                jPanelWrapper.add("view note", notes);
-
-                cl.show(jPanelWrapper, "view note");
+                showNotes();
             }
         });
         wmiGreenPolicy.addActionListener(new ActionListener() {
@@ -108,10 +103,7 @@ public class JFrameMainUI extends javax.swing.JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                JPanelBackup jpb = new JPanelBackup();
-                jPanelWrapper.add("backup", jpb);
-                ControllerBackup cbk = new ControllerBackup(jpb, viewNotes);
-                cl.show(jPanelWrapper, "backup");
+                showBackup();
             }
         });
         wmiNewNote.addActionListener(new ActionListener() {
@@ -134,6 +126,20 @@ public class JFrameMainUI extends javax.swing.JFrame {
                 dt.setVisible(true);
             }
         });
+    }
+
+    public void showNotes() {
+        //JPanelViewNotes notes = new JPanelViewNotes();
+        //viewNotes = new ControllerViewNotes(notes);
+        jPanelWrapper.add("view note", notes);
+        cl.show(jPanelWrapper, "view note");
+    }
+
+    public void showBackup() {
+        JPanelBackup jpb = new JPanelBackup();
+        jPanelWrapper.add("backup", jpb);
+        ControllerBackup cbk = new ControllerBackup(jpb, viewNotes, this);
+        cl.show(jPanelWrapper, "backup");
     }
 
     private JFrame me() {
@@ -166,7 +172,7 @@ public class JFrameMainUI extends javax.swing.JFrame {
 
     private void newNote() {
         JDialogNewNote note = new JDialogNewNote(this, true, this.getX(), this.getY(), this.getWidth());
-        ControllerNewNote cNote = new ControllerNewNote(note, notes, viewNotes);
+        ControllerNewNote cNote = new ControllerNewNote(note, notes, viewNotes, this);
         note.setVisible(true);
     }
 

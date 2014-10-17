@@ -31,10 +31,7 @@ public class JPanelGreenPolicy extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         webLabel3 = new com.alee.laf.label.WebLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
+        webLabel3.setBackground(new java.awt.Color(240, 240, 240));
         webLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         webLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hashnotes/resources/gogreen_64.png"))); // NOI18N
         webLabel3.setText("<html><p style=\"text-align:center\">\nWe are very passoinate about our enviroment &amp; thats <br/>\nwhy we have written this and all our application user manual<br/>\n in e-format.<br/>\nPlease download it/them at <a href=\"#\"> http://www.chieflabs.com/products</a><br/>\nLETS GO GREEN, LETS SAVE TREES!<br/>\nchieflabs &copy 2014.</p>\n");
